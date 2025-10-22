@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncFlow ヘルプセンター - あらゆる疑問を解決</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* InterとNoto Sans JPを併用 */
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .search-icon {
+            /* SVG search icon (lucide-react equivalent) */
+            width: 20px;
+            height: 20px;
+            stroke-width: 2.5;
+            color: #4b5563;
+        }
+        .feather-icon {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- ヘッダー (製品名とナビゲーション) -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="feather-icon text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span class="text-xl font-bold text-indigo-700">SyncFlow</span>
+                <span class="text-lg text-gray-500 ml-2">ヘルプセンター</span>
+            </a>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#" class="text-gray-600 hover:text-indigo-600 transition">ホーム</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600 transition">最新情報</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600 transition">お問い合わせ</a>
+                <a href="#" class="text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-lg hover:bg-indigo-100 transition">管理画面へ</a>
+            </nav>
+            <button class="md:hidden text-gray-600 hover:text-indigo-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="feather-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- ヒーローセクション (検索バー) -->
+        <section class="text-center mb-16 bg-white p-8 md:p-12 rounded-2xl shadow-xl">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-indigo-700 mb-4">SyncFlow ヘルプセンター</h1>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">製品の操作方法、トラブルシューティング、アカウント設定に関するあらゆる疑問にお答えします。</p>
+
+            <!-- 検索フォーム -->
+            <div class="max-w-3xl mx-auto">
+                <div class="relative">
+                    <input type="search" id="help-search" placeholder="例: データ連携方法, パスワード変更, 請求書"
+                           class="w-full p-4 pl-12 pr-4 text-lg border-2 border-indigo-200 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 shadow-md outline-none"
+                           oninput="filterArticles(this.value)">
+                    <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 注目トピック (Quick Links) -->
+            <div class="mt-8 flex flex-wrap justify-center gap-4 text-sm font-medium" id="quick-links">
+                <a href="#" class="text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-4 py-2 rounded-full transition hover:shadow-md">#初期設定</a>
+                <a href="#" class="text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-4 py-2 rounded-full transition hover:shadow-md">#連携設定</a>
+                <a href="#" class="text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-4 py-2 rounded-full transition hover:shadow-md">#請求プラン</a>
+                <a href="#" class="text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-4 py-2 rounded-full transition hover:shadow-md">#エラーコード500</a>
+            </div>
+        </section>
+
+        <!-- カテゴリーセクション -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-center mb-10">主要ヘルプカテゴリー</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="categories-container">
+
+                <!-- カテゴリーカード: 導入ガイド -->
+                <div class="category-card p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="text-indigo-600 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="feather-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">導入ガイド</h3>
+                    <p class="text-gray-500 text-sm mb-4">SyncFlowを初めて利用する際のステップや初期設定方法を解説します。</p>
+                    <ul class="space-y-2 text-sm text-indigo-600">
+                        <li><a href="#" class="hover:underline">クイックスタートガイド (5分で設定)</a></li>
+                        <li><a href="#" class="hover:underline">チームメンバーの招待と権限設定</a></li>
+                        <li><a href="#" class="hover:underline">ダッシュボードの見方と初期操作</a></li>
+                    </ul>
+                </div>
+
+                <!-- カテゴリーカード: 機能別操作方法 -->
+                <div class="category-card p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="text-green-600 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="feather-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">機能別操作方法</h3>
+                    <p class="text-gray-500 text-sm mb-4">プロジェクト作成、タスク管理、外部ツールとのデータ連携手順など。</p>
+                    <ul class="space-y-2 text-sm text-green-600">
+                        <li><a href="#" class="hover:underline">タスクの作成と担当者割り当て</a></li>
+                        <li><a href="#" class="hover:underline">外部サービス連携の設定方法（Slack, GitHubなど）</a></li>
+                        <li><a href="#" class="hover:underline">カスタムフィールドの活用例</a></li>
+                    </ul>
+                </div>
+
+                <!-- カテゴリーカード: アカウント・設定 -->
+                <div class="category-card p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="text-yellow-600 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="feather-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">アカウント・設定</h3>
+                    <p class="text-gray-500 text-sm mb-4">ユーザー情報、パスワード変更、組織のサブスクリプション管理と請求書について。</p>
+                    <ul class="space-y-2 text-sm text-yellow-600">
+                        <li><a href="#" class="hover:underline">パスワードをリセットする方法</a></li>
+                        <li><a href="#" class="hover:underline">契約プランの変更とアップグレード</a></li>
+                        <li><a href="#" class="hover:underline">過去の請求書を確認・ダウンロードする</a></li>
+                    </ul>
+                </div>
+
+                <!-- カテゴリーカード: トラブルシューティング -->
+                <div class="category-card p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="text-red-600 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="feather-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.308 17c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">トラブルシューティング</h3>
+                    <p class="text-gray-500 text-sm mb-4">発生しやすい問題とその解決策、よくあるエラーコードの説明。</p>
+                    <ul class="space-y-2 text-sm text-red-600">
+                        <li><a href="#" class="hover:underline">データが同期されない場合の確認事項</a></li>
+                        <li><a href="#" class="hover:underline">ログインできない時の対処法</a></li>
+                        <li><a href="#" class="hover:underline">ブラウザの推奨環境と設定</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 人気の記事セクション -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-center mb-8">人気のある記事</h2>
+            <div class="max-w-4xl mx-auto space-y-4">
+                <a href="#" class="block p-5 bg-white rounded-lg shadow-sm hover:shadow-md transition duration-200">
+                    <span class="text-sm font-semibold text-indigo-600 mr-3">機能</span>
+                    <span class="text-lg font-medium">SyncFlowとSalesforceのデータ連携（自動同期設定）</span>
+                </a>
+                <a href="#" class="block p-5 bg-white rounded-lg shadow-sm hover:shadow-md transition duration-200">
+                    <span class="text-sm font-semibold text-yellow-600 mr-3">設定</span>
+                    <span class="text-lg font-medium">二要素認証（2FA）の設定手順と解除方法</span>
+                </a>
+                <a href="#" class="block p-5 bg-white rounded-lg shadow-sm hover:shadow-md transition duration-200">
+                    <span class="text-sm font-semibold text-green-600 mr-3">導入</span>
+                    <span class="text-lg font-medium">【動画付き】初めてのプロジェクト作成と公開設定</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- サポートへの導線セクション -->
+        <section class="text-center p-8 bg-indigo-50 rounded-2xl shadow-inner">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-4">解決しない場合は、こちらからお問い合わせください</h2>
+            <p class="text-gray-600 mb-8">お客様の課題を迅速に解決するため、チャットサポートまたはチケット発行をご利用いただけます。</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#" class="bg-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition transform hover:scale-105 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="feather-icon mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                    </svg>
+                    チャットサポート（即時対応）
+                </a>
+                <a href="#" class="bg-white text-indigo-600 border-2 border-indigo-600 font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-50 transition transform hover:scale-105 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="feather-icon mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M9 9l-4 4" />
+                    </svg>
+                    サポートチケットを発行
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="mt-12 py-8 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <p>&copy; 2025 SyncFlow, Inc. All rights reserved.</p>
+            <div class="mt-2 space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white transition">利用規約</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">プライバシーポリシー</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">SyncFlow 公式サイト</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for simple search filtering -->
+    <script>
+        // 検索機能のモックアップ: 入力に応じてカテゴリーカードをフィルタリング
+        function filterArticles(searchTerm) {
+            const query = searchTerm.toLowerCase().trim();
+            const container = document.getElementById('categories-container');
+            const cards = container.getElementsByClassName('category-card');
+            const quickLinks = document.getElementById('quick-links');
+            const popularArticles = document.querySelector('section:nth-child(3)'); // 人気の記事セクション
+
+            if (query.length > 0) {
+                // 検索結果がある場合、主要カテゴリーと人気記事セクションを非表示にする
+                container.style.display = 'none';
+                popularArticles.style.display = 'none';
+                quickLinks.style.display = 'none';
+
+                // 本来はここでAPIを呼び出し、検索結果リストを動的に表示する
+                // モックアップのため、コンソールにメッセージを表示
+                console.log(`Searching for: ${query}`);
+                
+                // 簡易的な検索結果表示のロジックをここに実装することも可能ですが、今回はコンソールログに留めます。
+                // 例: 検索結果コンテナを表示し、ヒットした記事リストを表示。
+                // let mockResults = document.getElementById('mock-results');
+                // if (!mockResults) { ... create and append mockResults container ... }
+                // mockResults.innerHTML = `<div class="text-left max-w-4xl mx-auto"><h3 class="text-xl font-semibold mb-4">検索結果 (${query})</h3><p class="p-4 bg-white rounded-lg shadow-md">「${query}」に関連する記事が15件見つかりました。（本番ではここに記事リストが表示されます。）</p></div>`;
+
+            } else {
+                // 検索窓が空の場合、全て表示に戻す
+                container.style.display = 'grid';
+                popularArticles.style.display = 'block';
+                quickLinks.style.display = 'flex';
+                // let mockResults = document.getElementById('mock-results');
+                // if (mockResults) mockResults.remove();
+            }
+        }
+    </script>
+</body>
+</html>
+
